@@ -387,7 +387,7 @@ NOR-Dashboarb/
 │   ├── Bank logos
 │   └── Dashboard visual assets
 │
-├── Dataset/
+├── Data/
 │   ├── dim_bank.xlsx
 │   ├── dim_customer.xlsx
 │   ├── dim_date.xlsx
