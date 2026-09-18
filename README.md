@@ -159,85 +159,85 @@ The bank-wise page moves one level deeper and analyzes financed activity across 
 
 ## Landing
 
-![Landing Page](./Screenshots/Landing%20Page.png)
+![Landing Page](./Dashboard%20Previews/Landing%20Page.png)
 
 ---
 
 ## 1. Global Summary
 
-![Global Summary 1](./Screenshots/1-%20Global%20Summary%20Page.png)
+![Global Summary 1](./Dashboard%20Previews/1-%20Global%20Summary%20Page.png)
 
 ---
 
 ## 2. Global Summary
 
-![Global Summary 2](./Screenshots/2-%20Global%20Summary%20Page.png)
+![Global Summary 2](./Dashboard%20Previews/2-%20Global%20Summary%20Page.png)
 
 ---
 
 ## Summary by Date
 
-![Summary By Date](./Screenshots/Summary%20By%20Date%20Page.png)
+![Summary By Date](./Dashboard%20Previews/Summary%20By%20Date%20Page.png)
 
 ---
 
 ## Project Summary
 
-![Project Summary](./Screenshots/Project%20Summary.png)
+![Project Summary](./Dashboard%20Previews/Project%20Summary.png)
 
 ---
 
 ## Project Installments
 
-![Project Installments](./Screenshots/Project%20Installments.png)
+![Project Installments](./Dashboard%20Previews/Project%20Installments.png)
 
 ---
 
 ## Project Installments — First Option
 
-![Project Installments First Option](./Screenshots/Project%20Installments%20First%20Option%20.png)
+![Project Installments First Option](./Dashboard%20Previews/Project%20Installments%20First%20Option%20.png)
 
 ---
 
 ## Project Installments — Second Option
 
-![Project Installments Second Option](./Screenshots/Project%20Installment%20Second%20Option.png)
+![Project Installments Second Option](./Dashboard%20Previews/Project%20Installment%20Second%20Option.png)
 
 ---
 
 ## Project Summary by Bank
 
-![Project Summary By Bank](./Screenshots/Project%20Summary%20By%20Bank.png)
+![Project Summary By Bank](./Dashboard%20Previews/Project%20Summary%20By%20Bank.png)
 
 ---
 
 ## Project Installments by Bank
 
-![Project Installments By Bank](./Screenshots/Project%20Installments%20By%20Bank.png)
+![Project Installments By Bank](./Dashboard%20Previews/Project%20Installments%20By%20Bank.png)
 
 ---
 
 ## Project Summary by Cash
 
-![Project Summary By Cash](./Screenshots/Project%20Summary%20By%20Cash.png)
+![Project Summary By Cash](./Dashboard%20Previews/Project%20Summary%20By%20Cash.png)
 
 ---
 
 ## Project Installments by Cash
 
-![Project Installments By Cash](./Screenshots/Project%20Installments%20By%20Cash.png)
+![Project Installments By Cash](./Dashboard%20Previews/Project%20Installments%20By%20Cash.png)
 
 ---
 
 ## Project Summary — Bank Wise
 
-![Project Summary By Bank Wise](./Screenshots/Project%20Summary%20By%20Bank%20Wise.png)
+![Project Summary By Bank Wise](./Dashboard%20Previews/Project%20Summary%20By%20Bank%20Wise.png)
 
 ---
 
 ## Data Model — Galaxy Schema
 
-![Galaxy Schema](./Screenshots/Model.png)
+![Galaxy Schema](./Dashboard%20Previews/Model.png)
 
 The model follows a **Galaxy Schema** because the solution contains multiple fact tables sharing common dimensions.
 
