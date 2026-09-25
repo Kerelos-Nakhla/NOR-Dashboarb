@@ -22,6 +22,12 @@ The **NŌR Real Estate Intelligence Dashboard** is an enterprise-grade financial
 2. **Bank Channel Performance:** Managing customer financing across 9 commercial banks creates operational friction without a unified view of clearance times, default rates, and deposit distributions.
 3. **Project Velocity & Unit Mix:** Tracking unit absorption rates, percentage of completion (POC), and installment aging across projects.
 
+## Key Analytical Takeaways
+- **Installment intensity:** 21,616 tracked milestones across 3,088 contracts equals an average of **7 installment milestones per contract**, highlighting the importance of installment-level monitoring rather than contract-level reporting alone.
+- **Portfolio complexity:** The model combines sales and installment facts with shared customer, project, unit, payment-plan, date, and bank dimensions, allowing receivables to be analyzed from both commercial and collection perspectives.
+- **Decision focus:** The dashboard moves from portfolio-level performance to project, payment-plan, bank, and cash views, supporting investigation of where receivables are concentrated and how collection activity is distributed.
+
+
 ---
 
 ## Dashboard Visual Tour & Storytelling
