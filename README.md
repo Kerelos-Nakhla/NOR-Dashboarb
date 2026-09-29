@@ -23,7 +23,7 @@ The **NŌR Real Estate Intelligence Dashboard** is an enterprise-grade financial
 | Metric | Portfolio Value | Description / Business Impact |
 | :--- | :--- | :--- |
 | **Gross Contracted Sales** | **18,639.15M EGP (~18.64B)** | Total contract value across 3,088 sold residential and commercial units |
-| **Total Invoiced Amount** | **14,229.22M EGP (~14.23B)** | Total milestone value that has matured ( + ) |
+| **Total Invoiced Amount** | **14,229.22M EGP (~14.23B)** | Total milestone value that has matured (`Paid` + `Due - Not Paid`) |
 | **Total Amount Collected** | **13,094.37M EGP (~13.09B)** | Cash and banking receipts cleared into development accounts |
 | **Outstanding Receivables (Overdue)** | **1,134.85M EGP (~1.13B)** | Overdue installment arrears requiring collections intervention |
 | **Future Pipeline (Not Due)** | **4,409.93M EGP (~4.41B)** | Contracted cash flow pipeline maturing in upcoming fiscal quarters |
@@ -64,29 +64,139 @@ The portfolio spans 8 major developments with distinct sales velocities, ticket 
 
 ---
 
-## 📐 Key DAX Measures & Architecture
+## 📐 Key DAX Measures & Formula Reference
 
-The semantic model contains over **130 DAX measures** organized into functional calculation tables (, , , and ).
+The semantic model contains over **130 DAX measures** organized across calculation tables (`global_summary`, `collection_by_date_summary`, `8 Projects`, and `HTML Visuals`).
 
 ### 1. Global Portfolio Invoicing & Receivables
 Tracks matured receivables, cleared cash, and outstanding balances across the portfolio:
 
+```dax
+// Total cleared payments
+Amount Collected = 
+CALCULATE(
+    SUM(fact_installments[installment_amount]), 
+    fact_installments[installment_status] = "Paid"
+)
 
+// Total matured milestone invoices (Paid + Due)
+Invoiced Amount = 
+CALCULATE(
+    SUM(fact_installments[installment_amount]), 
+    fact_installments[installment_status] IN {"Paid", "Due - Not Paid"}
+)
 
-### 2. Multi-Channel Channel Segmentation (Bank vs. Cash)
+// Arrears balance due
+Outstanding Balance = 
+[Invoiced Amount] - [Amount Collected]
+
+// Contracted unit absorption rate
+Sold % = 
+DIVIDE([# Sold], [# Units])
+
+// Total units adopted in master plan
+# Units = 
+SUM(dim_project[adopted_total_units])
+
+// Total contracted units sold
+# Sold = 
+COUNTROWS(fact_sales)
+```
+
+### 2. Multi-Channel Segmentation (Bank Facilities vs. Direct Cash)
 Differentiates commercial banking debt service from direct developer cash installments:
 
+```dax
+// Outstanding receivables tied to commercial banking facilities
+Bank Outstanding = 
+SUMX(
+    FILTER(fact_sales, RELATED(dim_bank[bank/cash]) = "Bank"), 
+    [Outstanding Balance]
+)
 
+// Direct buyer cash installment arrears
+Cash Outstanding = 
+SUMX(
+    FILTER(fact_sales, RELATED(dim_bank[bank/cash]) = "Cash"), 
+    [Outstanding Balance]
+)
+```
 
-### 3. Project-Specific Milestone Intelligence (Pattern for all 8 Projects)
-Evaluates milestone collection efficiency per development:
+### 3. Project-Specific Milestone Intelligence (104 Measures Across 8 Projects)
+Evaluates milestone collection efficiency per development (sample for Crystal Plaza Maadi and Skyline):
 
+```dax
+// Issued milestone count excluding unbilled future installments
+Issued Invoices Crystal Plaza Maadi = 
+CALCULATE(
+    COUNTROWS(fact_installments),
+    dim_project[project_name] = "Crystal Plaza Maadi",
+    fact_installments[installment_status] <> "Not Due",
+    FILTER(fact_installments, fact_installments[installment_status] = "Paid" || fact_installments[installment_amount] > 0)
+)
 
+// Collected milestone invoices count
+Collected Invoices Crystal Plaza Maadi = 
+CALCULATE(
+    COUNTROWS(fact_installments), 
+    fact_installments[installment_status] = "Paid", 
+    dim_project[project_name] = "Crystal Plaza Maadi"
+)
 
-### 4. Dynamic Time Intelligence & Variance Analysis
-Computes period-over-period movement without relying on rigid built-in calendar limits:
+// Milestone collection rate %
+Collection Invoices Rate Crystal Plaza Maadi = 
+DIVIDE([Collected Invoices Crystal Plaza Maadi], [Issued Invoices Crystal Plaza Maadi])
 
+// Outstanding arrears amount for project
+Outstanding Amount Crystal Plaza Maadi = 
+CALCULATE(
+    SUM(fact_installments[installment_amount]), 
+    fact_installments[installment_status] = "Due - Not Paid", 
+    dim_project[project_name] = "Crystal Plaza Maadi"
+)
 
+// Total invoice amount (Collected + Outstanding)
+Total Invoice Amount Crystal Plaza Maadi = 
+[Collected Amount Crystal Plaza Maadi] + [Outstanding Amount Crystal Plaza Maadi]
+```
+
+### 4. Dynamic Time Intelligence & Period-Over-Period Tracking
+Computes period movements without rigid calendar limits:
+
+```dax
+// Collections realized in the active date context
+Collected New = 
+CALCULATE([Amount Collected])
+
+// Cumulative collections prior to the active date filter
+Collected Old = 
+CALCULATE(
+    [Amount Collected], 
+    dim_date[Date] < MIN(dim_date[Date])
+)
+
+// Active outstanding arrears in current window
+Outstanding New = 
+CALCULATE([Outstanding Balance])
+
+// Historical outstanding arrears before current window
+Outstanding Old = 
+CALCULATE(
+    [Outstanding Balance], 
+    dim_date[Date] < MIN(dim_date[Date])
+)
+
+// Active sales count in window
+Rows New = 
+CALCULATE(COUNTROWS(fact_sales))
+
+// Historical sales count prior to window
+Rows Old = 
+CALCULATE(
+    COUNTROWS(fact_sales), 
+    dim_date[Date] < MIN(dim_date[Date])
+)
+```
 
 ---
 
@@ -171,15 +281,15 @@ Computes period-over-period movement without relying on rigid built-in calendar 
 The enterprise data model utilizes a multi-fact Galaxy Schema connecting contracts, milestone receivables, and commercial banks:
 
 - **Fact Tables:**
-  -  — Unit sales contracts, transaction dates, customer keys, project keys, contract values
-  -  — Milestone payment schedules, due dates, payment status, settlement values, bank IDs
+  - `fact_sales` — Unit sales contracts, transaction dates, customer keys, project keys, contract values
+  - `fact_installments` — Milestone payment schedules, due dates, payment status, settlement values, bank IDs
 - **Dimension Tables:**
-  -  — Development names, phases, locations, master project IDs
-  -  — Unit types (Apartments, Duplexes, Penthouses, Commercial), floor plans, gross areas
-  -  — Investor and resident profiles, national IDs, contact classifications
-  -  — Banking partners (NBE, CIB, Banque Misr, QNB, AAIB, Alex Bank, Banque du Caire, Credit Agricole, EGBANK)
-  -  — Down payment ratios, milestone frequencies, grace periods
-  -  — Financial calendar hierarchy, due month, quarter, maturity fiscal year
+  - `dim_project` — Development names, phases, locations, master project IDs
+  - `dim_unit` — Unit types (Apartments, Duplexes, Penthouses, Commercial), floor plans, gross areas
+  - `dim_customer` — Investor and resident profiles, national IDs, contact classifications
+  - `dim_bank` — Banking partners (NBE, CIB, Banque Misr, QNB, AAIB, Alex Bank, Banque du Caire, Credit Agricole, EGBANK)
+  - `dim_payment_plan` — Down payment ratios, milestone frequencies, grace periods
+  - `dim_date` — Financial calendar hierarchy, due month, quarter, maturity fiscal year
 
 ### 📐 Model Representation
 <p align="center">
