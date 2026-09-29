@@ -227,7 +227,7 @@ CALCULATE(
 
 ### 4. Summary by Date & Collection Aging
 <p align="center">
-  <img src="./Dashboard%20Previews/Summary%20by%20Date%20Page.png" alt="NŌR Dashboard — Summary By Date" width="95%">
+  <img src="./Dashboard%20Previews/Summary%20by%20Date%20Page.png" alt="NŌR Dashboard — Summary By Date Page" width="95%">
 </p>
 
 ### 5. Project Portfolio Summary
