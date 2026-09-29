@@ -14,30 +14,87 @@
 ---
 
 ## 📌 Executive Overview
-The **NŌR Real Estate Intelligence Dashboard** is an enterprise-grade financial analytics and sales tracking system designed in Power BI. Built to manage 9 flagship multi-tier developments (including Skyline, Degla Landmark, One Kattameya, Lake Front, and Crystal Plaza), the platform solves the core business challenge of monitoring real estate receivables, contract progression, and multi-bank installment schedules.
+The **NŌR Real Estate Intelligence Dashboard** is an enterprise-grade financial analytics and sales tracking system built in Power BI. Modeling **8 flagship multi-tier developments** across Greater Cairo, Giza, and the North Coast, the system monitors **18.64B EGP** in contracted sales, tracks **21,616 installment milestones**, and provides actionable visibility into receivables, overdue collections, and banking clearance across **9 commercial banking partners**.
 
-### 📊 Core Key Performance Indicators (KPIs)
-- 📑 **Total Sales Transactions:** **3,088 validated unit contracts**
-- 💵 **Total Tracked Installments:** **21,616 payment milestones**
-- ⏱️ **Average Milestones per Contract:** **7.00 installment milestones / unit**
-- 🏦 **Multi-Bank Banking Coverage:** **9 Commercial Banks** (National Bank of Egypt, CIB, Banque Misr, QNB Egypt, AAIB, Alex Bank, Banque du Caire, Credit Agricole, EGBANK)
-- 🏗️ **Flagship Developments Modeled:** 9 mega-projects across residential, commercial, and mixed-use portfolios
+---
+
+## 📊 Portfolio Financial Summary & Core KPIs
+
+| Metric | Portfolio Value | Description / Business Impact |
+| :--- | :--- | :--- |
+| **Gross Contracted Sales** | **18,639.15M EGP (~18.64B)** | Total contract value across 3,088 sold residential and commercial units |
+| **Total Invoiced Amount** | **14,229.22M EGP (~14.23B)** | Total milestone value that has matured ( + ) |
+| **Total Amount Collected** | **13,094.37M EGP (~13.09B)** | Cash and banking receipts cleared into development accounts |
+| **Outstanding Receivables (Overdue)** | **1,134.85M EGP (~1.13B)** | Overdue installment arrears requiring collections intervention |
+| **Future Pipeline (Not Due)** | **4,409.93M EGP (~4.41B)** | Contracted cash flow pipeline maturing in upcoming fiscal quarters |
+| **Invoiced Collection Rate** | **92.02%** | Proportion of matured milestone values collected to date |
+| **Gross Portfolio Absorption** | **4.17%** | 3,088 units contracted out of 74,040 adopted master-plan units |
+| **Installment Milestones** | **21,616 Milestones** | 12,241 Paid (56.6%), 1,381 Overdue (6.4%), 7,994 Future (37.0%) |
+| **Average Milestone Density** | **7.00 Payments / Unit** | Average installment schedule length across financing plans |
+
+---
+
+## 📈 Project-Level Performance & Receivables Breakdown
+
+The portfolio spans 8 major developments with distinct sales velocities, ticket sizes, and cash flow profiles:
+
+| Project | Location | Adopted Units | Sold Units | Sold % | Gross Sales (EGP) | Collected (Paid) | Overdue (Arrears) | Future Pipeline | Invoiced Collection Rate |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Skyline Katamya** | Katameya, Cairo | 13,500 | 528 | 3.9% | 5,667.6M | 5,186.2M | 198.0M | 283.4M | **96.3%** |
+| **One Kattameya** | Katameya, Cairo | 3,572 | 640 | 17.9% | 3,405.3M | 2,370.5M | 122.8M | 912.0M | **95.1%** |
+| **Degla Landmark** | Nasr City, Cairo | 5,082 | 600 | 11.8% | 2,946.8M | 2,791.6M | 155.2M | 0.0M | **94.7%** |
+| **Rihana** | Maadi, Cairo | 891 | 455 | 51.1% | 2,266.0M | 922.9M | 95.4M | 1,247.7M | **90.6%** |
+| **Crystal Plaza Maadi** | Maadi, Cairo | 635 | 317 | 49.9% | 1,519.4M | 975.5M | 41.7M | 502.2M | **95.9%** |
+| **Lake Front 6** | 6th of October, Giza | 1,203 | 249 | 20.7% | 1,380.3M | 207.1M | 68.9M | 1,104.3M | **75.0%** |
+| **Degla Palms 6 October** | 6th of October, Giza | 23,928 | 279 | 1.2% | 1,309.5M | 516.0M | 81.7M | 711.8M | **86.3%** |
+| **Zahra North Coast** | Sidi Abdel Rahman, Alex | 25,132 | 20 | 0.1% | 145.4M | 118.0M | 27.4M | 0.0M | **81.2%** |
+
+---
+
+## 💡 In-Depth Financial Analysis & Key Insights
+
+1. **High Invoiced Collection Efficiency (92.0%):**
+   Matured installments show strong realization across mature Cairo projects (Skyline at 96.3%, Crystal Plaza at 95.9%, and One Kattameya at 95.1%), indicating high customer compliance on prime developments.
+2. **Receivables Risk Concentration:**
+   Outstanding arrears stand at **1.13B EGP** across 1,381 overdue milestones. The largest absolute arrears are in Skyline (198.0M EGP) and Degla Landmark (155.2M EGP), whereas Lake Front 6 exhibits the lowest collection rate (75.0%) due to newer schedule commencements.
+3. **Banking Channel Clearance vs. Direct Cash:**
+   Financed receivables flow through 9 major partner institutions (National Bank of Egypt, CIB, Banque Misr, QNB, AAIB, Alex Bank, Banque du Caire, Credit Agricole, EGBANK). Over 68% of banking installments concentrate in NBE, CIB, and Banque Misr.
+4. **Future Cash Flow Realization (4.41B EGP Pipeline):**
+   With 7,994 unbilled future milestones totaling 4.41B EGP, Rihana (1.25B EGP) and Lake Front 6 (1.10B EGP) represent the primary medium-term cash generators.
+
+---
+
+## 📐 Key DAX Measures & Architecture
+
+The semantic model contains over **130 DAX measures** organized into functional calculation tables (, , , and ).
+
+### 1. Global Portfolio Invoicing & Receivables
+Tracks matured receivables, cleared cash, and outstanding balances across the portfolio:
+
+
+
+### 2. Multi-Channel Channel Segmentation (Bank vs. Cash)
+Differentiates commercial banking debt service from direct developer cash installments:
+
+
+
+### 3. Project-Specific Milestone Intelligence (Pattern for all 8 Projects)
+Evaluates milestone collection efficiency per development:
+
+
+
+### 4. Dynamic Time Intelligence & Variance Analysis
+Computes period-over-period movement without relying on rigid built-in calendar limits:
+
+
 
 ---
 
 ## 🎯 Business Problem & Objectives
-1. 📈 **Cash Flow Predictability:** Provide milestone-by-milestone visibility into projected collections, overdue installments, and future liquidity.
+1. 📈 **Cash Flow Predictability:** Milestone-by-milestone visibility into projected collections, overdue installments, and future liquidity.
 2. 🏦 **Commercial Banking Channel Optimization:** Monitor clearance cycles, transaction volumes, and collection distributions across 9 partner banks.
 3. 🏢 **Project Sales Velocity & Unit Mix:** Track absorption rates, sold inventory, and pricing performance across developments.
 4. 💳 **Payment Plan Risk Assessment:** Compare structured bank financing vs. direct cash installment structures to mitigate customer default exposure.
-
----
-
-## 💡 In-Depth Data Analysis & Business Insights
-- 📑 **Milestone Density & Collection Complexity:** Managing **21,616 milestones across 3,088 contracts** demands installment-level granular tracking; macro contract-level metrics obscure short-term cash flow gaps.
-- 🏦 **Banking Partner Concentration:** Over 68% of financed installment volumes flow through the top 3 commercial banks (NBE, CIB, and Banque Misr), underscoring the value of streamlined banking reconciliation.
-- 🏢 **Development Velocity Variations:** Skyline and Degla Landmark lead transaction velocity (over 45% of total units), while premium waterfront projects generate superior per-square-meter revenue margins.
-- 💰 **Cash vs. Bank Settlement Profiles:** Cash installment plans show higher average ticket sizes but require active aging analysis to maintain collection pacing compared to direct bank debits.
 
 ---
 
@@ -60,7 +117,7 @@ The **NŌR Real Estate Intelligence Dashboard** is an enterprise-grade financial
 
 ### 4. Summary by Date & Collection Aging
 <p align="center">
-  <img src="./Dashboard%20Previews/Summary%20By%20Date%20Page.png" alt="NŌR Dashboard — Summary by Date" width="95%">
+  <img src="./Dashboard%20Previews/Summary%20by%20Date%20Page.png" alt="NŌR Dashboard — Summary by Date" width="95%">
 </p>
 
 ### 5. Project Portfolio Summary
@@ -114,15 +171,15 @@ The **NŌR Real Estate Intelligence Dashboard** is an enterprise-grade financial
 The enterprise data model utilizes a multi-fact Galaxy Schema connecting contracts, milestone receivables, and commercial banks:
 
 - **Fact Tables:**
-  - `fact_sales` — Unit sales contracts, transaction dates, customer keys, project keys, contract values
-  - `fact_installments` — Milestone payment schedules, due dates, payment status, settlement values, bank IDs
+  -  — Unit sales contracts, transaction dates, customer keys, project keys, contract values
+  -  — Milestone payment schedules, due dates, payment status, settlement values, bank IDs
 - **Dimension Tables:**
-  - `dim_project` — Development names, phases, locations, master project IDs
-  - `dim_unit` — Unit types (Apartments, Duplexes, Penthouses, Commercial), floor plans, gross areas
-  - `dim_customer` — Investor and resident profiles, national IDs, contact classifications
-  - `dim_bank` — Banking partners (NBE, CIB, Banque Misr, QNB, AAIB, Alex Bank, Banque du Caire, Credit Agricole, EGBANK)
-  - `dim_payment_plan` — Down payment ratios, milestone frequencies, grace periods
-  - `dim_date` — Financial calendar hierarchy, due month, quarter, maturity fiscal year
+  -  — Development names, phases, locations, master project IDs
+  -  — Unit types (Apartments, Duplexes, Penthouses, Commercial), floor plans, gross areas
+  -  — Investor and resident profiles, national IDs, contact classifications
+  -  — Banking partners (NBE, CIB, Banque Misr, QNB, AAIB, Alex Bank, Banque du Caire, Credit Agricole, EGBANK)
+  -  — Down payment ratios, milestone frequencies, grace periods
+  -  — Financial calendar hierarchy, due month, quarter, maturity fiscal year
 
 ### 📐 Model Representation
 <p align="center">
@@ -133,8 +190,9 @@ The enterprise data model utilizes a multi-fact Galaxy Schema connecting contrac
 
 ## 🛠️ Tools & Technologies
 - 📊 **Power BI Desktop:** Multi-level financial reports, interactive project matrix, banking drill-downs
-- 📐 **DAX (Data Analysis Expressions):** Milestone Collection Rate %, Outstanding Receivables, Cash Flow Projection, Average Ticket Value
-- 🧹 **Power Query (M):** Multi-table staging, installment reconciliation, data normalization
+- 📐 **DAX (Data Analysis Expressions):** 130+ dynamic measures for receivables, collection rates, aging, and variance intelligence
+- 🗄️ **Power BI Project (PBIP) & TMDL:** Source-control ready tabular model definition language
+- ⚡ **Power Query (M):** Multi-table staging, installment reconciliation, data normalization
 - 🏗️ **Data Architecture:** Galaxy Schema with dual shared dimensions across sales and installments
 
 ---
