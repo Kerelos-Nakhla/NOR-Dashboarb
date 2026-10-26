@@ -14,7 +14,7 @@
 ---
 
 ## 📌 Executive Overview
-The **NŌR Real Estate Intelligence Dashboard** is an enterprise-grade financial analytics and sales tracking system built in Power BI. Modeling **8 flagship multi-tier developments** across Greater Cairo, Giza, and the North Coast, the system monitors **18.64B EGP** in contracted sales, tracks **21,616 installment milestones**, and provides actionable visibility into receivables, overdue collections, and banking clearance across **9 commercial banking partners**.
+The **NŌR Real Estate Intelligence Dashboard** is an enterprise-grade financial analytics and sales tracking system built in Power BI. Modeling **8 flagship multi-tier developments** across Greater Cairo, Giza, and the North Coast, the system monitors **18.64B EGP** in contracted sales, tracks **21,616 installment milestones**, and provides actionable visibility into receivables, overdue collections, and banking clearance across **10 commercial banking partners**.
 
 ---
 
@@ -58,7 +58,7 @@ The portfolio spans 8 major developments with distinct sales velocities, ticket 
 2. **Receivables Risk Concentration:**
    Outstanding arrears stand at **1.13B EGP** across 1,381 overdue milestones. The largest absolute arrears are in Skyline (198.0M EGP) and Degla Landmark (155.2M EGP), whereas Lake Front 6 exhibits the lowest collection rate (75.0%) due to newer schedule commencements.
 3. **Banking Channel Clearance vs. Direct Cash:**
-   Financed receivables flow through 9 major partner institutions (National Bank of Egypt, CIB, Banque Misr, QNB, AAIB, Alex Bank, Banque du Caire, Credit Agricole, EGBANK). Over 68% of banking installments concentrate in NBE, CIB, and Banque Misr.
+   Financed receivables flow through 10 major partner institutions (National Bank of Egypt, CIB, Banque Misr, QNB, AAIB, Alex Bank, Banque du Caire, Credit Agricole Egypt, EGBANK, and Housing & Development Bank). Over 68% of banking installments concentrate in NBE, CIB, and Banque Misr.
 4. **Future Cash Flow Realization (4.41B EGP Pipeline):**
    With 7,994 unbilled future milestones totaling 4.41B EGP, Rihana (1.25B EGP) and Lake Front 6 (1.10B EGP) represent the primary medium-term cash generators.
 
@@ -202,7 +202,7 @@ CALCULATE(
 
 ## 🎯 Business Problem & Objectives
 1. 📈 **Cash Flow Predictability:** Milestone-by-milestone visibility into projected collections, overdue installments, and future liquidity.
-2. 🏦 **Commercial Banking Channel Optimization:** Monitor clearance cycles, transaction volumes, and collection distributions across 9 partner banks.
+2. 🏦 **Commercial Banking Channel Optimization:** Monitor clearance cycles, transaction volumes, and collection distributions across 10 partner banks.
 3. 🏢 **Project Sales Velocity & Unit Mix:** Track absorption rates, sold inventory, and pricing performance across developments.
 4. 💳 **Payment Plan Risk Assessment:** Compare structured bank financing vs. direct cash installment structures to mitigate customer default exposure.
 
@@ -287,7 +287,7 @@ The enterprise data model utilizes a multi-fact Galaxy Schema connecting contrac
   - `dim_project` — Development names, phases, locations, master project IDs
   - `dim_unit` — Unit types (Apartments, Duplexes, Penthouses, Commercial), floor plans, gross areas
   - `dim_customer` — Investor and resident profiles, national IDs, contact classifications
-  - `dim_bank` — Banking partners (NBE, CIB, Banque Misr, QNB, AAIB, Alex Bank, Banque du Caire, Credit Agricole, EGBANK)
+  - `dim_bank` — Banking partners (National Bank of Egypt, CIB, Banque Misr, QNB Egypt, AAIB, Alex Bank, Banque du Caire, Credit Agricole Egypt, EGBANK, Housing & Development Bank)
   - `dim_payment_plan` — Down payment ratios, milestone frequencies, grace periods
   - `dim_date` — Financial calendar hierarchy, due month, quarter, maturity fiscal year
 
